@@ -1,0 +1,85 @@
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Toto je Semestrální práce z KIV/WEB">
+        <meta name="author" content="Vuong Tran Duc">
+        <title>Semestrální práce</title>
+        <link rel="stylesheet" href="../libs/bootstrap-3.3.5-dist/js/bootstrap.min.js">
+        <link rel="stylesheet" href="../libs/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../styles/main_style.css"> 
+        <script>
+            function validate_textarea_newpost() {
+                var x = document.forms["new_post_form"]["post_textarea"].value;
+                x = x.trim();
+                if (x == null || x.length <=0) {
+                    alert("You can not post empty post.");
+                    return false;
+                }
+                if(x.length > 1000){
+                    alert("The maximum length is one thousand characters.");
+                    return false;
+                }
+            }
+            function validate_textarea_newcomment() {
+                var x = document.forms["new_comment_form"]["comment_textarea"].value;
+                x = x.trim();
+                if (x == null || x.length <=0) {
+                    alert("You can not post empty comment.");
+                    return false;
+                }
+                if(x.length > 300){
+                    alert("The maximum length is three hundreds characters.");
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    
+    
+    <body>
+        <div id="header_panel" class="with_shadow">
+            <div id="nav_panel" class="navbar navbar-fixed-top">
+                {{ nav_links|raw }}
+            </div>
+        </div>
+        
+        <div id="visible_body" class="container"> <!-- ************************** -->
+            <div id="content_panel" class="row">
+                <div id="left_panel" class="col-sm-3">
+                   <div id="user_panel" class="single_left_panel with_shadow with_radius with_border ">
+                       {{ user_infos|raw }}
+                    </div>
+                    <div class="single_left_panel with_shadow with_radius with_border">
+                       {{ more_infos|raw }}
+                    </div>
+                </div>
+                <div id="center_panel" class="with_border with_shadow with_radius col-sm-6">
+                    <div id="new_post">
+                        {{ new_post | raw }}
+                        
+                        
+                        <div style="clear:both;"></div>
+                        
+                    </div>
+
+                    {{ all_posts|raw }}
+                </div>
+                
+                <div id="right_panel" class="col-sm-3">
+                    <div class="single_right with_border with_shadow with_radius">
+                        {{ you_may_know|raw }}
+                    </div>
+                </div>
+                <div class="clear_panel"></div>
+            </div>
+                
+            <div id="footer_panel">
+                {{ copy_right|raw }}
+            </div>
+            
+        </div><!-- ****************************************************************************** -->
+        
+    </body>
+</html>
